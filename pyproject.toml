@@ -4,3 +4,9 @@ version = "0.1.0"
 description = "CLI toolkit for investment research and market analysis"
 readme = "README.md"
 requires-python = ">=3.12"
+dependencies = [
+    "typer>=0.16.0",
+]
+
+[project.scripts]
+atlas = "main:main"
