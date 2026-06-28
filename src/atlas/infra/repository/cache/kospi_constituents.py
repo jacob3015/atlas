@@ -14,7 +14,6 @@ class KospiConstituentsCacheRepository:
 
         self.cache_path.parent.mkdir(parents=True, exist_ok=True)
 
-        # TODO 데이터 프레임 복사하는 이유 확인하기
         df = df.copy()
         df["ticker"] = df["ticker"].astype(str).str.zfill(6)
         df["name"] = df["name"].astype(str).str.strip()
