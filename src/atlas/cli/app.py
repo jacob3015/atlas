@@ -1,7 +1,8 @@
-from atlas import __version__
-from atlas.cli import hello
-
 import typer
+
+from atlas import __version__
+from atlas.cli.example import hello
+from atlas.cli.stock import kospi_constituents
 
 
 def create_app() -> typer.Typer:
@@ -21,5 +22,6 @@ def create_app() -> typer.Typer:
             raise typer.Exit()
 
     hello.register(app)
+    kospi_constituents.register(app)
 
     return app
