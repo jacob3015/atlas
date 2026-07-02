@@ -18,7 +18,7 @@ Next steps:
 
 See also:
 
-    docs/cli/etf/etf.md
+    docs/cli/etf/etf-master.md
 """.strip()
 
 CACHE_NOT_FOUND_MESSAGE = """
