@@ -1,6 +1,6 @@
 import typer
 
-from atlas.cli.bootstrap import create_etf_service
+from atlas.cli.bootstrap import create_etf_master_service
 
 RAW_NOT_FOUND_MESSAGE = """
 ETF raw data not found.
@@ -35,7 +35,7 @@ def register(app: typer.Typer) -> None:
     @etf_app.command()
     def build() -> None:
         """Build ETF cache from raw CSV."""
-        service = create_etf_service()
+        service = create_etf_master_service()
 
         try:
             df = service.build()
@@ -50,7 +50,7 @@ def register(app: typer.Typer) -> None:
     @etf_app.command()
     def read() -> None:
         """Read ETF cache."""
-        service = create_etf_service()
+        service = create_etf_master_service()
 
         try:
             df = service.read()

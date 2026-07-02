@@ -20,7 +20,7 @@ def create_kospi_constituents_service() -> KospiConstituentsService:
 
     return KospiConstituentsService(raw=raw, cache=cache)
 
-def create_etf_service() -> EtfMasterService:
+def create_etf_master_service() -> EtfMasterService:
     raw = EtfMasterRawRepository(
         Path(".atlas/raw/etf/master")
     )
