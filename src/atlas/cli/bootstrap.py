@@ -4,9 +4,9 @@ from atlas.domain.stock.service.kospi_constituents import KospiConstituentsServi
 from atlas.infra.repository.cache.kospi_constituents import KospiConstituentsCacheRepository
 from atlas.infra.repository.raw.kospi_constituents import KospiConstituentsRawRepository
 
-from atlas.domain.etf.service.etf import EtfService
-from atlas.infra.repository.raw.etf import EtfRawRepository
-from atlas.infra.repository.cache.etf import EtfCacheRepository
+from atlas.domain.etf.service.etf_master import EtfMasterService
+from atlas.infra.repository.raw.etf_master import EtfMasterRawRepository
+from atlas.infra.repository.cache.etf_master import EtfMasterCacheRepository
 
 
 def create_kospi_constituents_service() -> KospiConstituentsService:
@@ -20,13 +20,13 @@ def create_kospi_constituents_service() -> KospiConstituentsService:
 
     return KospiConstituentsService(raw=raw, cache=cache)
 
-def create_etf_service() -> EtfService:
-    raw = EtfRawRepository(
-        Path(".atlas/raw/etf")
+def create_etf_service() -> EtfMasterService:
+    raw = EtfMasterRawRepository(
+        Path(".atlas/raw/etf/master")
     )
 
-    cache = EtfCacheRepository(
-        Path(".atlas/cache/etf/etf.parquet")
+    cache = EtfMasterCacheRepository(
+        Path(".atlas/cache/etf/etf_master.parquet")
     )
 
-    return EtfService(raw=raw, cache=cache)
+    return EtfMasterService(raw=raw, cache=cache)

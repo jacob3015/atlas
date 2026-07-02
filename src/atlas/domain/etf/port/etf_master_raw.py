@@ -3,7 +3,7 @@ from typing import Protocol
 import pandas as pd
 
 
-class EtfRawPort(Protocol):
+class EtfMasterRawPort(Protocol):
     def read(self) -> pd.DataFrame:
         ...
 

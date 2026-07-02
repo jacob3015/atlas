@@ -3,7 +3,7 @@ from pathlib import Path
 import pandas as pd
 
 
-class EtfCacheRepository:
+class EtfMasterCacheRepository:
     REQUIRED_COLUMNS = {
         "ticker",
         "name",

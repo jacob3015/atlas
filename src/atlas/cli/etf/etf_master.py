@@ -62,4 +62,4 @@ def register(app: typer.Typer) -> None:
         typer.echo()
         typer.echo(f"Rows: {len(df)}")
 
-    app.add_typer(etf_app, name="etf")
+    app.add_typer(etf_app, name="etf-master")

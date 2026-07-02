@@ -1,17 +1,17 @@
 import pandas as pd
 
 from atlas.domain.etf.port.etf_master_cache import (
-    EtfCachePort,
+    EtfMasterCachePort,
 )
 from atlas.domain.etf.port.etf_master_raw import (
-    EtfRawPort,
+    EtfMasterRawPort,
 )
 
-class EtfService:
+class EtfMasterService:
     def __init__(
             self,
-            raw: EtfRawPort,
-            cache: EtfCachePort,
+            raw: EtfMasterRawPort,
+            cache: EtfMasterCachePort,
     ):
         self.raw = raw
         self.cache = cache

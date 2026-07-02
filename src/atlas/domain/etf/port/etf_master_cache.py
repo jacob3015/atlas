@@ -3,7 +3,7 @@ from typing import Protocol
 import pandas as pd
 
 
-class EtfCachePort(Protocol):
+class EtfMasterCachePort(Protocol):
     def save(self, df: pd.DataFrame) -> None:
         ...
 
