@@ -22,9 +22,8 @@ Create the following directory if it does not already exist.
 
 ```text
 .atlas/
-└── raw/
-    └── stock/
-        └── kospi-constituents/
+└── data/
+    └── kospi-constituents/
 ```
 
 ---
@@ -54,17 +53,16 @@ Atlas automatically loads the **most recently modified CSV file** in the directo
 Move the downloaded CSV into:
 
 ```text
-.atlas/raw/stock/kospi-constituents/
+.atlas/data/kospi-constituents/
 ```
 
 Example:
 
 ```text
 .atlas/
-└── raw/
-    └── stock/
-        └── kospi-constituents/
-            └── kospi-20260628.csv
+└── data/
+    └── kospi-constituents/
+        └── kospi_20260628.csv
 ```
 
 ---
@@ -74,15 +72,15 @@ Example:
 Generate the Parquet cache.
 
 ```bash
-atlas kospi-constituents build
+atlas index stock constituents build --symbol kospi
 ```
 
 The cache will be created at:
 
 ```text
 .atlas/
-└── cache/
-    └── stock/
+└── data/
+    └── kospi-constituents/
         └── kospi_constituents.parquet
 ```
 
@@ -93,7 +91,7 @@ The cache will be created at:
 Display the cached constituents.
 
 ```bash
-atlas kospi-constituents read
+atlas index stock constituents read --symbol kospi
 ```
 
 ---

@@ -22,9 +22,8 @@ Create the following directory if it does not already exist.
 
 ```text
 .atlas/
-└── raw/
-    └── etf/
-        └── master/
+└── data/
+    └── krx-etf-master/
 ```
 
 ---
@@ -54,17 +53,16 @@ Atlas automatically loads the **most recently modified CSV file** in the directo
 Move the downloaded CSV into:
 
 ```text
-.atlas/raw/etf/master/
+.atlas/data/krx-etf-master/
 ```
 
 Example:
 
 ```text
 .atlas/
-└── raw/
-    └── etf/
-        └── master/
-            └── etf-master-20260702.csv
+└── data/
+    └── krx-etf-master/
+        └── krx_etf_master_20260702.csv
 ```
 
 ---
@@ -74,16 +72,16 @@ Example:
 Generate the Parquet cache.
 
 ```bash
-atlas etf-master build
+atlas etf master build --symbol krx
 ```
 
 The cache will be created at:
 
 ```text
 .atlas/
-└── cache/
-    └── etf/
-        └── etf-master.parquet
+└── data/
+    └── krx-etf-master/
+        └── krx_etf_master.parquet
 ```
 
 ---
@@ -93,7 +91,7 @@ The cache will be created at:
 Display the cached ETF master data.
 
 ```bash
-atlas etf-master read
+atlas etf master read --symbol krx
 ```
 
 ---
