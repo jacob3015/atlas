@@ -1,12 +1,13 @@
 import typer
 
-from atlas.cli.bootstrap import create_etf_master_service
+from atlas.cli.bootstrap import create_krx_etf_master_service
 
 RAW_NOT_FOUND_MESSAGE = """
 ETF raw data not found.
 
-Expected directory:
-    .atlas/raw/etf/
+Expected:
+
+    .atlas/data/krx-etf-master/*.csv
     
 Next steps:
 
@@ -14,11 +15,11 @@ Next steps:
 2. Place the CSV in the directory above.
 3. Run:
     
-    atlas etf build
+    atlas etf master build  --symbol krx
 
 See also:
 
-    docs/cli/etf/etf-master.md
+    docs/cli/etf/krx-etf-master.md
 """.strip()
 
 CACHE_NOT_FOUND_MESSAGE = """
@@ -26,16 +27,20 @@ ETF cache not found.
 
 Build the cache first:
 
-    atlas etf build
+    atlas etf master build --symbol krx
 """.strip()
 
 def register(app: typer.Typer) -> None:
     etf_app = typer.Typer(help="ETF commands.")
+    master_app = typer.Typer(help="Master ETF commands.")
 
-    @etf_app.command()
-    def build() -> None:
+    @master_app.command()
+    def build(symbol: str = typer.Option(..., "--symbol", "-s")) -> None:
         """Build ETF cache from raw CSV."""
-        service = create_etf_master_service()
+        if symbol.lower() != "krx":
+            raise typer.BadParameter("Currently only 'krx' is supported.")
+
+        service = create_krx_etf_master_service()
 
         try:
             df = service.build()
@@ -47,10 +52,13 @@ def register(app: typer.Typer) -> None:
         typer.echo()
         typer.echo(f"Rows: {len(df)}")
 
-    @etf_app.command()
-    def read() -> None:
+    @master_app.command()
+    def read(symbol: str = typer.Option(..., "--symbol", "-s")) -> None:
         """Read ETF cache."""
-        service = create_etf_master_service()
+        if symbol.lower() != "krx":
+            raise typer.BadParameter("Currently only 'krx' is supported.")
+
+        service = create_krx_etf_master_service()
 
         try:
             df = service.read()
@@ -62,4 +70,5 @@ def register(app: typer.Typer) -> None:
         typer.echo()
         typer.echo(f"Rows: {len(df)}")
 
-    app.add_typer(etf_app, name="etf-master")
+    etf_app.add_typer(master_app, name="master")
+    app.add_typer(etf_app, name="etf")

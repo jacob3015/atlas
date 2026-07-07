@@ -2,11 +2,7 @@ from typing import Protocol
 
 import pandas as pd
 
-
-class EtfMasterCachePort(Protocol):
-    def save(self, df: pd.DataFrame) -> None:
-        ...
-
+class CsvPort(Protocol):
     def read(self) -> pd.DataFrame:
         ...
 

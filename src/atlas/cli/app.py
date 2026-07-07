@@ -2,8 +2,8 @@ import typer
 
 from atlas import __version__
 from atlas.cli.example import hello
-from atlas.cli.stock import kospi_constituents
-from atlas.cli.etf import etf_master
+from atlas.cli.index import stock as index_stock
+from atlas.cli.etf import master as etf_master
 
 
 def create_app() -> typer.Typer:
@@ -23,7 +23,7 @@ def create_app() -> typer.Typer:
             raise typer.Exit()
 
     hello.register(app)
-    kospi_constituents.register(app)
+    index_stock.register(app)
     etf_master.register(app)
 
     return app

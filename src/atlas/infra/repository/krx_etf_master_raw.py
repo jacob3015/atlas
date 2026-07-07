@@ -3,7 +3,7 @@ from pathlib import Path
 import pandas as pd
 
 
-class EtfMasterRawRepository:
+class KrxEtfMasterRawRepository:
     ENCODINGS = ("cp949", "euc-kr", "utf-8-sig", "utf-8")
 
     REQUIRED_COLUMNS = {
