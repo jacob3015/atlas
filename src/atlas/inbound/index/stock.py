@@ -1,6 +1,6 @@
 import typer
 
-from atlas.cli.bootstrap import create_kospi_constituents_service
+from atlas.bootstrap import create_kospi_constituents_service
 
 
 KOSPI_CONSTITUENTS_RAW_NOT_FOUND_MESSAGE = """
@@ -20,7 +20,7 @@ Next steps:
 
 See also:
 
-    docs/cli/index/stock/kospi-constituents.md
+    docs/command/kospi-constituents.md
 """.strip()
 
 

@@ -2,10 +2,8 @@ from typing import Protocol
 
 import pandas as pd
 
-class ParquetPort(Protocol):
-    def save(self, df: pd.DataFrame) -> None:
-        ...
 
+class DataFrameReader(Protocol):
     def read(self) -> pd.DataFrame:
         ...
 

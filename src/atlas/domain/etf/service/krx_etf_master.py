@@ -1,32 +1,34 @@
 import pandas as pd
 
-from atlas.domain.port.parquet import (
-    ParquetPort,
+from atlas.domain.instrument.port.dataframe_reader import (
+    DataFrameReader,
 )
-from atlas.domain.port.csv import (
-    CsvPort,
+from atlas.domain.instrument.port.dataframe_writer import (
+    DataFrameWriter,
 )
 
 class KrxEtfMasterService:
     def __init__(
             self,
-            raw_port: CsvPort,
-            cache_port: ParquetPort,
+            raw_reader: DataFrameReader,
+            cache_writer: DataFrameWriter,
+            cache_reader: DataFrameReader,
     ):
-        self.raw_port = raw_port
-        self.cache_port = cache_port
+        self.raw_reader = raw_reader
+        self.cache_writer = cache_writer
+        self.cache_reader = cache_reader
 
     def build(self) -> pd.DataFrame:
-        if not self.raw_port.exists():
+        if not self.raw_reader.exists():
             raise FileNotFoundError("ETF raw file not found.")
 
-        df = self.raw_port.read()
-        self.cache_port.save(df)
+        df = self.raw_reader.read()
+        self.cache_writer.write(df)
 
         return df
 
     def read(self) -> pd.DataFrame:
-        if not self.cache_port.exists():
+        if not self.cache_reader.exists():
             raise FileNotFoundError("ETF cache file not found.")
 
-        return self.cache_port.read()
+        return self.cache_reader.read()

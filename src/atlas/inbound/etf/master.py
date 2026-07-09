@@ -1,6 +1,6 @@
 import typer
 
-from atlas.cli.bootstrap import create_krx_etf_master_service
+from atlas.bootstrap import create_krx_etf_master_service
 
 RAW_NOT_FOUND_MESSAGE = """
 ETF raw data not found.
@@ -19,7 +19,7 @@ Next steps:
 
 See also:
 
-    docs/cli/etf/krx-etf-master.md
+    docs/command/etf-master.md
 """.strip()
 
 CACHE_NOT_FOUND_MESSAGE = """

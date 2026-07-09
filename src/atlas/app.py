@@ -1,9 +1,9 @@
 import typer
 
 from atlas import __version__
-from atlas.cli.example import hello
-from atlas.cli.index import stock as index_stock
-from atlas.cli.etf import master as etf_master
+from atlas.inbound.example import hello
+from atlas.inbound.index import stock as index_stock
+from atlas.inbound.etf import master as etf_master
 
 
 def create_app() -> typer.Typer:

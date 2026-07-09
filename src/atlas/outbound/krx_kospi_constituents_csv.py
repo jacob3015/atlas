@@ -3,7 +3,7 @@ from pathlib import Path
 import pandas as pd
 
 
-class KospiConstituentsRawRepository:
+class KrxKospiConstituentsCsvRepo:
     ENCODINGS = ("cp949", "euc-kr", "utf-8-sig", "utf-8")
 
     REQUIRED_COLUMNS = {
@@ -11,15 +11,15 @@ class KospiConstituentsRawRepository:
         "종목명",
     }
 
-    def __init__(self, raw_dir: Path):
-        self.raw_dir = raw_dir
+    def __init__(self, csv_dir: Path):
+        self.csv_dir = csv_dir
 
     def read(self) -> pd.DataFrame:
         csv_path = self._find_latest_csv()
 
         if csv_path is None:
             raise FileNotFoundError(
-                f"No CSV files found in: {self.raw_dir}"
+                f"No CSV files found in: {self.csv_dir}"
             )
 
         df = self._read_csv(csv_path)
@@ -31,12 +31,12 @@ class KospiConstituentsRawRepository:
         return self._find_latest_csv() is not None
 
     def _find_latest_csv(self) -> Path | None:
-        if not self.raw_dir.exists():
+        if not self.csv_dir.exists():
             return None
 
         csv_files = [
             path
-            for path in self.raw_dir.glob("*.csv")
+            for path in self.csv_dir.glob("*.csv")
             if path.is_file()
         ]
 

@@ -1,4 +1,4 @@
-from atlas.cli.app import create_app
+from atlas.app import create_app
 
 
 def main() -> None:

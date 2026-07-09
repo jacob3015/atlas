@@ -3,7 +3,7 @@ from pathlib import Path
 import pandas as pd
 
 
-class KrxEtfMasterCacheRepository:
+class KrxEtfMasterParquetRepo:
     REQUIRED_COLUMNS = {
         "ticker",
         "name",
@@ -33,7 +33,7 @@ class KrxEtfMasterCacheRepository:
     def __init__(self, cache_path: Path):
         self.cache_path = cache_path
 
-    def save(self, df: pd.DataFrame) -> None:
+    def write(self, df: pd.DataFrame) -> None:
         self._validate(df)
 
         self.cache_path.parent.mkdir(parents=True, exist_ok=True)
