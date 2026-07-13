@@ -1,9 +1,7 @@
 import typer
 
 from atlas import __version__
-from atlas.inbound.example import hello
-from atlas.inbound.index import stock as index_stock
-from atlas.inbound.etf import master as etf_master
+from atlas.support.command import register as support_register
 
 
 def create_app() -> typer.Typer:
@@ -22,8 +20,6 @@ def create_app() -> typer.Typer:
             typer.echo(f"Atlas {__version__}")
             raise typer.Exit()
 
-    hello.register(app)
-    index_stock.register(app)
-    etf_master.register(app)
+    support_register(app)
 
     return app
