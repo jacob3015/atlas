@@ -1,6 +1,6 @@
 import pandas as pd
 
-from atlas.port.dataframe import (
+from atlas.storage.port import (
     DataFrameReader,
     DataFrameWriter,
 )
