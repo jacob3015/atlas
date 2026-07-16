@@ -2,6 +2,7 @@ import typer
 
 from atlas import __version__
 from atlas.support.command import register as support_register
+from atlas.config.command import register as config_register
 
 
 def create_app() -> typer.Typer:
@@ -21,5 +22,6 @@ def create_app() -> typer.Typer:
             raise typer.Exit()
 
     support_register(app)
+    config_register(app)
 
     return app
