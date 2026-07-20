@@ -22,7 +22,7 @@ class SettingLoader:
             raise SettingsError(
                 "KRX OpenAPI authentication key is not configured.\n\n"
                 "Register the authentication key first:\n\n"
-                "    atlas config set krx-auth-key"
+                "    atlas config set krx-open-api-auth-key"
             )
 
         return AtlasConfig(
