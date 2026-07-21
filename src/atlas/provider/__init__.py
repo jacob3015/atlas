@@ -1,4 +1,10 @@
-from atlas.provider.krx import KrxKospiSeriesDailyPriceProvider
+from atlas.provider.krx import (
+    KrxKospiSeriesDailyPriceProvider,
+    KrxKospiStockBasicInfoProvider,
+)
 
 
-__all__ = ["KrxKospiSeriesDailyPriceProvider"]
+__all__ = [
+    "KrxKospiSeriesDailyPriceProvider",
+    "KrxKospiStockBasicInfoProvider",
+]
